@@ -27,18 +27,25 @@ var main = function () {
 
 
 
-/*
 
 
-  $('#developer').click(function() {
-    window.location.href=
+
+
+  $('#developer').mouseover(function() {
+    $(this).text("Coming Soon!");
   });
 
+  $('#developer').mouseleave(function() {
+    $(this).text("Meet the Developer");
+  });
 
+  $('#performer').mouseover(function() {
+    $(this).text("Coming Soon!");
+  });
 
-*/
-
-
+  $('#performer').mouseleave(function() {
+    $(this).text("Meet the Performer");
+  });
 
 
 

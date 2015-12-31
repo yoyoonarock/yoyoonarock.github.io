@@ -43,14 +43,14 @@ a{
 #developer{
   display: inline-block;
   width: 100px;
-  padding: 0px 25px;
+  padding: 0px 50px;
   font-size: 24px;
 }
 
 #performer{
   display: inline-block;
   width: 100px;
-  padding: 0px 25px;
+  padding: 0px 50px;
   font-size: 24px;
 }
 
@@ -218,6 +218,7 @@ a{
 .slider ul li {
   display: inline;
   padding: 0px 10px;
+  text-align: center;
 }
 
 
