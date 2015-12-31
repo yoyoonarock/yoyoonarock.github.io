@@ -1,0 +1,407 @@
+body {
+	background:#AABBCC;
+}
+
+.content{
+  display: block;
+}
+
+a{
+  text-decoration: none;
+}
+
+.f16{
+  font-size: 16px;
+}
+
+.f20{
+  font-size: 20px;
+}
+
+.f24{
+  font-size: 24px;
+}
+
+
+
+
+
+
+/* INDEX */
+
+.introduction{
+  margin: 100px auto;
+  text-align: center;
+  font-size: 28px;
+  width: 600px;
+}
+
+.forwardcontainer{
+  text-align: center;
+}
+
+#developer{
+  display: inline-block;
+  width: 100px;
+  padding: 0px 25px;
+  font-size: 24px;
+}
+
+#performer{
+  display: inline-block;
+  width: 100px;
+  padding: 0px 25px;
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.topcontainer{
+
+}
+
+.textblock{
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+}
+
+.video{
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+}
+
+
+
+
+
+/* ABOUT ME*/
+
+.container{
+  text-align: center;
+  margin: 0px 0px 200px 0px;
+  height: 350px;
+}
+
+.slide{
+  display: none;
+  /*margin: 0px 200px;*/
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header{
+  font-size: 60px;
+  font-weight: 400;
+  padding: 100px 0px 75px 0px;
+}
+
+.aboutme-block{
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.active-slide{
+  display: block;
+}
+
+#aboutme-text{
+  text-align: left;
+}
+
+#education-left{
+  float: left;
+  text-align: left;
+}
+
+#education-right{
+  float: right;
+  text-align: right;
+}
+
+.coursework-block{
+  display: inline-block;
+  width: 250px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.coursework-title{
+  text-align: center;
+}
+
+.coursework-list{
+  text-align: left;
+  font-size: 20px;
+}
+
+.skills-block{
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-title{
+  text-align: center;
+}
+
+.skills-programminglist{
+  text-align: center;
+}
+
+.skills-programming{
+  display: inline-block;
+  text-align: left;
+  font-size: 20px;
+}
+
+.skills-list{
+  text-align: left;
+  font-size: 20px;
+  display: inline-block;
+}
+
+.slider{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+}
+/*
+.arrow-prev {
+  margin-right: 45px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 9px;
+}
+
+.arrow-next {
+  margin-left: 45px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 9px;
+}
+
+.slider-dots {
+  list-style: none;
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.slider-dots li {
+  color: black;
+  display: inline;
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.slider-dots li.active-dot {
+  color: white;
+}*/
+
+.slider ul li {
+  display: inline;
+  padding: 0px 10px;
+}
+
+
+/* EXPERIENCE */
+
+
+.company{
+  font-size: 40px;
+}
+
+.location{
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+
+.bold{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+.experience-menu {
+  display: inline-block;
+  text-align: left;
+  margin: 0px 50px;
+}
+
+.active-ds{
+  background-color: white;
+}
+
+.experience-textblock {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  margin: 0px 50px;
+}
+
+.experience-subblock {
+  display: none;
+}
+
+.active-subblock {
+  display: block;
+}
+
+.subheader{
+  vertical-align: top;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.description{
+  vertical-align: top;
+  text-align: left;
+}
+
+/*
+
+.content{
+  display: block;
+  margin: 100px;
+  border: 3px solid #FFFFFF;
+  padding: 100px 100px;
+  position: relative;
+}
+
+.container{
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.textblock{
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 40%;
+  float:left;
+}
+
+.title{
+  font-size: 36px;
+  position: relative;
+  clear: both;
+  height: 50%;
+  width: 100%;
+}
+
+.date{
+  font-size: 20px;
+  position: relative;
+  clear: both;
+  height: 50%;
+  width: 100%;
+}
+
+.video{
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 40%;
+  float: right;
+}
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+
+.video{
+	display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.active-video{
+	display: block;
+}
+
+.sidebar{
+	float: left;
+	background-color: #888;
+	
+	padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+
+.sidebar-box{
+  background-color: #999;
+  display: block;
+}
+
+.sidebar-box-active{
+  background-color: #777;
+}
+
+
+
+.has-children ul{
+	position: relative;
+  width: 100%;
+  display: none;
+  background-color: #1c1f22;
+}
+
+.test{
+  display: block;
+}
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
