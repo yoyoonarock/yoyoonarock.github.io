@@ -30,7 +30,8 @@ a{
 /* INDEX */
 
 .introduction{
-  margin: 100px auto;
+  margin: 0px auto;
+  padding: 100px 0px;
   text-align: center;
   font-size: 28px;
   width: 600px;
@@ -38,6 +39,7 @@ a{
 
 .forwardcontainer{
   text-align: center;
+  padding: 50px 0px;
 }
 
 #developer{
@@ -54,7 +56,14 @@ a{
   font-size: 24px;
 }
 
+.socialmedia{
+  text-align: center;
+  padding-top: 100px;
+}
 
+.socialmedia a{
+  padding: 10px;
+}
 
 
 
