@@ -21,15 +21,14 @@ var main = function () {
     }, 200);
   });*/
 
+  /* For synchronization purposes */
+  
 
 
 
 
 
-
-
-
-
+/* Home Page - index.html */
 
   $('#developer').mouseover(function() {
     $(this).text("Coming Soon!");
@@ -49,13 +48,137 @@ var main = function () {
 
 
 
+/* Developer About Me - developer.html */
+
+  $('.slider ul li').click(function(){
+
+    var currentSlide = $('.active-slide');
+    var newSlide = $(this);
+
+    if (newSlide.hasClass('slider-aboutme'))
+    {
+      if (currentSlide.hasClass('aboutme-slide'))
+      {
+        return;
+      }
+      else
+      {
+        currentSlide.fadeOut(500).removeClass('active-slide');
+
+        setTimeout(function(){ 
+          $('.aboutme-slide').fadeIn(500).addClass('active-slide');
+        }, 500);
+      }
+    }
+
+    else if (newSlide.hasClass('slider-education'))
+    {
+      if (currentSlide.hasClass('education-slide'))
+      {
+        return;
+      }
+      else
+      {
+        currentSlide.fadeOut(500).removeClass('active-slide');
+
+        setTimeout(function(){ 
+          $('.education-slide').fadeIn(500).addClass('active-slide');
+        }, 500);
+      }
+    }
+
+    else if (newSlide.hasClass('slider-coursework'))
+    {
+      if (currentSlide.hasClass('coursework-slide'))
+      {
+        return;
+      }
+      else
+      {
+        currentSlide.fadeOut(500).removeClass('active-slide');
+
+        setTimeout(function(){ 
+          $('.coursework-slide').fadeIn(500).addClass('active-slide');
+        }, 500);
+      }
+    }
+
+    else if (newSlide.hasClass('slider-skills'))
+    {
+      if (currentSlide.hasClass('skills-slide'))
+      {
+        return;
+      }
+      else
+      {
+        currentSlide.fadeOut(500).removeClass('active-slide');
+
+        setTimeout(function(){ 
+          $('.skills-slide').fadeIn(500).addClass('active-slide');
+        }, 500);
+      }
+    }
+
+    $('.slider ul li').removeClass('active-block');
+    $(this).addClass('active-block');
+
+    count = 0;
+  });
 
 
 
 
 
+  $(document).keydown(function(event){
 
+    if (event.which === 39)
+    {
+      var currentSlide = $('.active-slide');
+      var nextSlide = currentSlide.next();
 
+      var currentBlock = $('.active-block');
+      var nextBlock = currentBlock.next();
+
+      if (nextSlide.length === 0)
+      {
+        nextSlide = $('.slide').first();
+        nextBlock = $('.slider ul li').first();
+      }
+
+      currentSlide.fadeOut(500).removeClass('active-slide');
+
+      setTimeout(function(){ 
+        nextSlide.fadeIn(500).addClass('active-slide');
+      }, 500);
+
+      currentBlock.removeClass('active-block');
+      nextBlock.addClass('active-block');
+    }
+    else if (event.which === 37)
+    {
+      var currentSlide = $('.active-slide');
+      var prevSlide = currentSlide.prev();
+
+      var currentBlock = $('.active-block');
+      var prevBlock = currentBlock.prev();
+
+      if (prevSlide.length === 0)
+      {
+        prevSlide = $('.slide').last();
+        prevBlock = $('.slider ul li').last();
+      }
+
+      currentSlide.fadeOut(500).removeClass('active-slide');
+
+      setTimeout(function(){ 
+        prevSlide.fadeIn(500).addClass('active-slide');
+      }, 500);
+
+      currentBlock.removeClass('active-block');
+      prevBlock.addClass('active-block');
+    }
+
+  });
 
 
 
@@ -126,63 +249,24 @@ var main = function () {
 
 
 
-  $('.arrow-next').click(function () {
-    
-  });
-
-  $('.arrow-prev').click(function(){
-    var currentSlide = $('.active-slide');
-    var prevSlide = currentSlide.prev();
-
-    var currentDot = $('.active-dot');
-    var prevDot = currentDot.prev();
-
-    if (prevSlide.length === 0)
-    {
-      prevSlide = $('.slide').last();
-      prevDot = $('.dot').last();
-    }
-
-    currentSlide.fadeOut(500).removeClass('active-slide');
-
-    setTimeout(function(){ 
-      prevSlide.fadeIn(500).addClass('active-slide');
-    }, 500);
-
-    currentDot.removeClass('active-dot');
-    prevDot.addClass('active-dot');
-  });
+  
 
 
 
-
-  $(document).keydown(function(event){
-    if (event.which === 39)
-    {
-      $('.arrow-next').click();
-    }
-    else if (event.which === 37)
-    {
-      $('.arrow-prev').click();
-    }
-  });
+/* Work Experience - experience.html*/
 
 
-
-
-
-
-  $('.experience-menu li').mouseover(function(){
+  $('.side-menu ul li').mouseover(function(){
     $(this).addClass('active-ds');
   });
 
-  $('.experience-menu li').mouseleave(function(){
+  $('.side-menu ul li').mouseleave(function(){
     $(this).removeClass('active-ds');
   });
 
 
-  $('.experience-menu li').click(function(){
-    $('.experience-menu li').removeClass('bold');
+  $('.side-menu ul li').click(function(){
+    $('.side-menu ul li').removeClass('bold');
     $(this).addClass('bold');
   });
 
