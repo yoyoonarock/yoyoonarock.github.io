@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/linked-letter-puzzle.scss";
+import "../../styles/linked-letter-puzzle-page/linked-letter-puzzle.scss";
 
 enum KeyboardKey {
 	ARROW_LEFT = "ArrowLeft",
