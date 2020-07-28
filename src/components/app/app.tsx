@@ -3,7 +3,7 @@ import React from "react";
 import { LinkedLetterPuzzle } from "../linked-letter-puzzle";
 
 export const App = () => {
-	const inputWords = ["apple", "banana", "kiwi"];
+	const linkedLetterPuzzleWords = ["almond", "pine nut", "pecan", "cashew", "hazelnut", "walnut", "brazil nut"];
 
-	return <LinkedLetterPuzzle inputWords={inputWords} />;
+	return <LinkedLetterPuzzle inputWords={linkedLetterPuzzleWords} />;
 };

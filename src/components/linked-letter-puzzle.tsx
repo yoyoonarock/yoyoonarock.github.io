@@ -104,7 +104,9 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 	};
 
 	const isPuzzleSolved = (): boolean => {
-		return currentPuzzleInput.toLowerCase() === SOLUTION;
+		console.log(currentPuzzleInput.toLowerCase());
+		console.log(SOLUTION.toLowerCase());
+		return currentPuzzleInput.toLowerCase() === SOLUTION.toLowerCase();
 	};
 
 	const getGridCells = (rowIndex: number) => {
