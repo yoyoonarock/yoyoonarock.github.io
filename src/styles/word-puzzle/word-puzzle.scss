@@ -1,0 +1,33 @@
+.word-puzzle-page {
+	display: flex;
+	justify-content: center;
+}
+
+.cell-background {
+	background-color: grey;
+	height: 30px;
+	width: 30px;
+}
+
+.cell-input {
+	height: 24px;
+	width: 22px;
+
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 30px;
+
+	cursor: pointer;
+	text-align: center;
+}
+
+.description {
+	margin-left: 40px;
+	width: 434px;
+
+	text-align: center;
+}
+
+.word-puzzle-answer {
+	border: 4px magenta solid;
+	padding: 24px;
+}

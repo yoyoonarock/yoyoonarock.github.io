@@ -1,17 +1,25 @@
 import React from "react";
 
-import "../../styles/linked-letter-puzzle-page/linked-letter-puzzle.scss";
-
 enum KeyboardKey {
 	ARROW_LEFT = "ArrowLeft",
 	ARROW_RIGHT = "ArrowRight",
 }
 
 interface Props {
+	currentPuzzleInput: string;
 	inputWords: string[];
+	totalWordLength: number;
+	setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+	setCurrentPuzzleInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
+export const WordPuzzleBase = ({
+	inputWords,
+	totalWordLength,
+	currentPuzzleInput,
+	setCurrentPuzzleInput,
+	setCompleted,
+}: Props) => {
 	const MAX_WORD_LENGTH = inputWords.reduce((currentMaxLength, word) => {
 		return word.length > currentMaxLength ? word.length : currentMaxLength;
 	}, 0);
@@ -20,13 +28,9 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 	const GRID_WIDTH = MAX_WORD_LENGTH + 2;
 
 	const SOLUTION = inputWords.join("");
-	const TOTAL_WORD_LENGTH = inputWords.reduce((currentTotalLength, word) => {
-		return currentTotalLength + word.length;
-	}, 0);
 
-	const [currentPuzzleInput, setCurrentPuzzleInput] = React.useState(" ".repeat(TOTAL_WORD_LENGTH));
 	const refs = React.useRef<HTMLInputElement[]>([]);
-	const usedRefs = Array(TOTAL_WORD_LENGTH).fill(false);
+	const usedRefs = Array(totalWordLength).fill(false);
 
 	const staticHeightArray = Array(GRID_HEIGHT).fill(0);
 	const staticWidthArray = Array(GRID_WIDTH).fill(0);
@@ -48,11 +52,11 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 	};
 
 	const findPreviousRef = (refIndex: number): number => {
-		return refIndex === 0 ? TOTAL_WORD_LENGTH - 1 : refIndex - 1;
+		return refIndex === 0 ? totalWordLength - 1 : refIndex - 1;
 	};
 
 	const findNextRef = (refIndex: number): number => {
-		return refIndex === TOTAL_WORD_LENGTH - 1 ? 0 : refIndex + 1;
+		return refIndex === totalWordLength - 1 ? 0 : refIndex + 1;
 	};
 
 	const handleArrowKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, refIndex: number) => {
@@ -79,6 +83,9 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 		refs.current[refIndex].value = input;
 		const newPuzzleInput = currentPuzzleInput.substr(0, refIndex) + input + currentPuzzleInput.substr(refIndex + 1);
 		setCurrentPuzzleInput(newPuzzleInput);
+		if (isPuzzleSolved(newPuzzleInput)) {
+			setCompleted(true);
+		}
 
 		usedRefs[refIndex] = true;
 
@@ -103,10 +110,8 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 		refs.current[nextRefIndex].focus();
 	};
 
-	const isPuzzleSolved = (): boolean => {
-		console.log(currentPuzzleInput.toLowerCase());
-		console.log(SOLUTION.toLowerCase());
-		return currentPuzzleInput.toLowerCase() === SOLUTION.toLowerCase();
+	const isPuzzleSolved = (input: string): boolean => {
+		return input.toLowerCase() === SOLUTION.toLowerCase();
 	};
 
 	const getGridCells = (rowIndex: number) => {
@@ -120,7 +125,7 @@ export const LinkedLetterPuzzle = ({ inputWords }: Props) => {
 						{columnIndex !== 0 && columnIndex <= currentWord.length && (
 							<input
 								className='cell-input'
-								disabled={isPuzzleSolved()}
+								disabled={isPuzzleSolved(currentPuzzleInput)}
 								key={mapWordLetterToRefIndex(wordIndex, columnIndex - 1)}
 								maxLength={1}
 								onKeyDown={(e) =>
