@@ -7,6 +7,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 
 import { WordPuzzlePage } from "./word-puzzle/word-puzzle-page";
+import { WorkoutPage } from "./workout/workout-page";
 
 const WORD_PUZZLE_WORDS = ["almond", "pine nut", "pecan", "cashew", "hazelnut", "walnut", "brazil nut"];
 const TOTAL_WORD_LENGTH = WORD_PUZZLE_WORDS.reduce((currentTotalLength, word) => {
@@ -41,6 +42,7 @@ const TabPanel = (props: TabPanelProps) => {
 export const App = () => {
 	const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
 
+	const [workoutTaskCompleted, setWorkoutTaskCompleted] = React.useState(false);
 	const [wordPuzzleCompleted, setWordPuzzleCompleted] = React.useState(false);
 	const [wordPuzzleInput, setWordPuzzleInput] = React.useState(" ".repeat(TOTAL_WORD_LENGTH));
 
@@ -58,16 +60,19 @@ export const App = () => {
 					textColor='primary'
 					centered
 				>
-					<Tab label='About' />
-					<Tab label='About' />
-					<Tab label='About' />
-					<Tab label='About' />
-					<Tab label='About' />
-					<Tab label='About' />
-					<Tab label='Pea' />
-					<Tab label='Schedule' />
+					<Tab label='about' />
+					<Tab label='olute' />
+					<Tab label='idk' />
+					<Tab label='idk' />
+					<Tab label='idk' />
+					<Tab label='idk' />
+					<Tab label='pea' />
+					<Tab label='schedule' />
 				</Tabs>
 			</Paper>
+			<TabPanel value={selectedTabIndex} index={1}>
+				<WorkoutPage completed={workoutTaskCompleted} setCompleted={setWorkoutTaskCompleted} />
+			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={6}>
 				<WordPuzzlePage
 					completed={wordPuzzleCompleted}

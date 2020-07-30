@@ -3,8 +3,11 @@ import React from "react";
 import Alert from "@material-ui/lab/Alert";
 
 import { WordPuzzleBase } from "./word-puzzle-base";
+import { Prompt } from "../prompt";
 
-const PROMPT = `for this challenge think of a category
+import "../../styles/word-puzzle/word-puzzle.scss";
+
+const WORD_PUZZLE_DESCRIPTION = `for this challenge think of a category
 we'll have them in hand when telling a story
 in general they are extremely versatile
 but we'll typically just munch on them for a while
@@ -57,7 +60,7 @@ export const WordPuzzlePage = ({
 	};
 
 	return (
-		<span className='word-puzzle-page'>
+		<div className='word-puzzle-page'>
 			<WordPuzzleBase
 				inputWords={inputWords}
 				totalWordLength={totalWordLength}
@@ -66,10 +69,10 @@ export const WordPuzzlePage = ({
 				setCurrentPuzzleInput={setCurrentPuzzleInput}
 			/>
 			<span className='description'>
-				<p className='prompt'>{PROMPT}</p>
-				<p className='answer'>{getMessage()}</p>
+				<Prompt text={WORD_PUZZLE_DESCRIPTION} />
+				<p className='word-puzzle-answer'>{getMessage()}</p>
 				{completed && <Alert severity='success'>Well done!</Alert>}
 			</span>
-		</span>
+		</div>
 	);
 };

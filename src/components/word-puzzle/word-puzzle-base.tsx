@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../../styles/word-puzzle/word-puzzle.scss";
-
 enum KeyboardKey {
 	ARROW_LEFT = "ArrowLeft",
 	ARROW_RIGHT = "ArrowRight",
