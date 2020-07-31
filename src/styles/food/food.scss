@@ -1,0 +1,36 @@
+.food-page {
+	display: flex;
+	justify-content: center;
+}
+
+.food-picture-row {
+	display: flex;
+	justify-content: center;
+}
+
+.food-picture-list {
+	display: grid;
+}
+
+.image-container {
+	display: flex;
+}
+
+.food-input-container {
+	display: flex;
+	align-items: center;
+}
+
+.food-letter {
+	white-space: pre-wrap;
+}
+
+.food-answer {
+	width: 166px;
+}
+
+.image {
+	height: 100px;
+	width: 100px;
+	margin: 16px;
+}

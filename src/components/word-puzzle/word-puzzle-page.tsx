@@ -27,7 +27,7 @@ const MESSAGE_DIGITS = [
 ];
 
 interface Props {
-	completed: boolean;
+	activity: Activity;
 	currentPuzzleInput: string;
 	inputWords: string[];
 	totalWordLength: number;
@@ -36,13 +36,15 @@ interface Props {
 }
 
 export const WordPuzzlePage = ({
-	completed,
+	activity,
 	currentPuzzleInput,
 	inputWords,
 	totalWordLength,
 	setCompleted,
 	setCurrentPuzzleInput,
 }: Props) => {
+	const { color, completed } = activity;
+
 	const getMessage = () => {
 		let message = "";
 		for (let i = 0; i < MESSAGE_DIGITS.length; i++) {
@@ -70,8 +72,10 @@ export const WordPuzzlePage = ({
 			/>
 			<span className='description'>
 				<Prompt text={WORD_PUZZLE_DESCRIPTION} />
-				<p className='word-puzzle-answer'>{getMessage()}</p>
-				{completed && <Alert severity='success'>Well done!</Alert>}
+				<p className='word-puzzle-answer' style={{ border: `4px ${color} solid` }}>
+					{getMessage()}
+				</p>
+				{completed && <Alert severity='success'>well done!</Alert>}
 			</span>
 		</div>
 	);
