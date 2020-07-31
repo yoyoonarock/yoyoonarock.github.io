@@ -5,8 +5,6 @@ import Alert from "@material-ui/lab/Alert";
 import { DualInputAnswer } from "../dual-input-answer";
 import { Prompt } from "../prompt";
 
-import "../../styles/workout/workout.scss";
-
 const WORKOUT_DESCRIPTION = `eyesight may not be your strength
 but this one will test your height and length
 we could be jocks instead of being nerds
