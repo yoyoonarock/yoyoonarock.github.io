@@ -18,10 +18,10 @@ import { Color } from "../constants";
 
 import "../styles/app.scss";
 
+const ABOUT_RHYME = `hope you like rhymes / it's puzzle time`;
 const CAKE_RHYME = `take a break / make a cake`;
 const DANCE_RHYME = `what is the chance / learn a tiktok dance`;
 const FOOD_RHYME = `what's cookin' / good lookin'`;
-const PUZZLE_RHYME = `hope you like rhymes / it's puzzle time`;
 const SHOWS_RHYME = `leave it to the pros / watch some shows`;
 const WORKOUT_RHYME = "morning with babs / get those abs";
 const WORD_PUZZLE_RHYME = `can't get thinner / let's eat dinner`;
@@ -59,6 +59,7 @@ const TabPanel = (props: TabPanelProps) => {
 export const App = () => {
 	const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
 
+	const [aboutActivityCompleted, setAboutActivityCompleted] = React.useState(false);
 	const [cakeActivityCompleted, setCakeActivityCompleted] = React.useState(false);
 	const [danceActivityCompleted, setDanceActivityCompleted] = React.useState(false);
 	const [foodActivityCompleted, setFoodActivityCompleted] = React.useState(false);
@@ -67,21 +68,15 @@ export const App = () => {
 	const [wordPuzzleCompleted, setWordPuzzleCompleted] = React.useState(false);
 	const [wordPuzzleInput, setWordPuzzleInput] = React.useState(" ".repeat(TOTAL_WORD_LENGTH));
 
-	const [scheduleArray, setScheduleArray] = React.useState<Activity[]>([
-		{
-			answer: PUZZLE_RHYME,
-			color: Color.RED,
-			completed: true,
-		},
-	]);
+	const [scheduleArray, setScheduleArray] = React.useState<Activity[]>([]);
 	const [everythingCompleted, setEverythingCompleted] = React.useState(false);
 
 	React.useEffect(() => {
 		const updatedSchedule: Activity[] = [
 			{
-				answer: PUZZLE_RHYME,
+				answer: ABOUT_RHYME,
 				color: Color.RED,
-				completed: true,
+				completed: aboutActivityCompleted,
 			},
 			{
 				answer: WORKOUT_RHYME,
@@ -118,7 +113,8 @@ export const App = () => {
 		setScheduleArray(updatedSchedule);
 
 		setEverythingCompleted(
-			foodActivityCompleted &&
+			aboutActivityCompleted &&
+				foodActivityCompleted &&
 				workoutActivityCompleted &&
 				wordPuzzleCompleted &&
 				showsActivityCompleted &&
@@ -126,6 +122,7 @@ export const App = () => {
 				cakeActivityCompleted
 		);
 	}, [
+		aboutActivityCompleted,
 		foodActivityCompleted,
 		workoutActivityCompleted,
 		wordPuzzleCompleted,
@@ -148,6 +145,7 @@ export const App = () => {
 					textColor='primary'
 					centered
 				>
+					<Tab label='schedule' />
 					<Tab label='about' />
 					<Tab label='happy' />
 					<Tab label='birthday' />
@@ -155,25 +153,27 @@ export const App = () => {
 					<Tab label='you' />
 					<Tab label='cha' />
 					<Tab label='cha cha' />
-					<Tab label='schedule' />
 				</Tabs>
 			</Paper>
 			<TabPanel value={selectedTabIndex} index={0}>
-				<AboutPage activity={scheduleArray[0]} />
+				<SchedulePage scheduleArray={scheduleArray} everythingCompleted={everythingCompleted} />
 			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={1}>
-				<WorkoutPage activity={scheduleArray[1]} setCompleted={setWorkoutActivityCompleted} />
+				<AboutPage activity={scheduleArray[0]} setCompleted={setAboutActivityCompleted} />
 			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={2}>
-				<FoodPage activity={scheduleArray[2]} setCompleted={setFoodActivityCompleted} />
+				<WorkoutPage activity={scheduleArray[1]} setCompleted={setWorkoutActivityCompleted} />
 			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={3}>
-				<DancePage activity={scheduleArray[3]} setCompleted={setDanceActivityCompleted} />
+				<FoodPage activity={scheduleArray[2]} setCompleted={setFoodActivityCompleted} />
 			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={4}>
-				<CakePage activity={scheduleArray[4]} setCompleted={setCakeActivityCompleted} />
+				<DancePage activity={scheduleArray[3]} setCompleted={setDanceActivityCompleted} />
 			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={5}>
+				<CakePage activity={scheduleArray[4]} setCompleted={setCakeActivityCompleted} />
+			</TabPanel>
+			<TabPanel value={selectedTabIndex} index={6}>
 				<WordPuzzlePage
 					activity={scheduleArray[5]}
 					currentPuzzleInput={wordPuzzleInput}
@@ -183,11 +183,8 @@ export const App = () => {
 					setCurrentPuzzleInput={setWordPuzzleInput}
 				/>
 			</TabPanel>
-			<TabPanel value={selectedTabIndex} index={6}>
-				<ShowsPage activity={scheduleArray[6]} setCompleted={setShowsActivityCompleted} />
-			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={7}>
-				<SchedulePage scheduleArray={scheduleArray} everythingCompleted={everythingCompleted} />
+				<ShowsPage activity={scheduleArray[6]} setCompleted={setShowsActivityCompleted} />
 			</TabPanel>
 		</div>
 	);

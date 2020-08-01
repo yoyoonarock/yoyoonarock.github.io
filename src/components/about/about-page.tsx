@@ -13,8 +13,13 @@ cause I don't remember what we were gonna do!`;
 
 interface Props {
 	activity: Activity;
+	setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const AboutPage = ({ activity }: Props) => {
+export const AboutPage = ({ activity, setCompleted }: Props) => {
+	React.useEffect(() => {
+		setCompleted(true);
+	}, [setCompleted]);
+
 	return <BasicPage activity={activity} description={ABOUT_DESCRIPTION} />;
 };
