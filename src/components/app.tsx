@@ -7,6 +7,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 
 import { AboutPage } from "./about/about-page";
+import { CakePage } from "./cake/cake-page";
+import { DancePage } from "./dance/dance-page";
 import { FoodPage } from "./food/food-page";
 import { SchedulePage } from "./schedule/schedule-page";
 import { ShowsPage } from "./shows/shows-page";
@@ -17,7 +19,7 @@ import { Color } from "../constants";
 import "../styles/app.scss";
 
 const CAKE_RHYME = `take a break / make a cake`;
-const DANCE_RHYME = `what's the chance / learn a tiktok dance`;
+const DANCE_RHYME = `what is the chance / learn a tiktok dance`;
 const FOOD_RHYME = `what's cookin' / good lookin'`;
 const PUZZLE_RHYME = `hope you like rhymes / it's puzzle time`;
 const SHOWS_RHYME = `leave it to the pros / watch some shows`;
@@ -57,6 +59,8 @@ const TabPanel = (props: TabPanelProps) => {
 export const App = () => {
 	const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
 
+	const [cakeActivityCompleted, setCakeActivityCompleted] = React.useState(false);
+	const [danceActivityCompleted, setDanceActivityCompleted] = React.useState(false);
 	const [foodActivityCompleted, setFoodActivityCompleted] = React.useState(false);
 	const [showsActivityCompleted, setShowsActivityCompleted] = React.useState(false);
 	const [workoutActivityCompleted, setWorkoutActivityCompleted] = React.useState(false);
@@ -92,12 +96,12 @@ export const App = () => {
 			{
 				answer: DANCE_RHYME,
 				color: Color.GREEN,
-				completed: foodActivityCompleted,
+				completed: danceActivityCompleted,
 			},
 			{
 				answer: CAKE_RHYME,
 				color: Color.BLUE,
-				completed: true,
+				completed: cakeActivityCompleted,
 			},
 			{
 				answer: WORD_PUZZLE_RHYME,
@@ -113,8 +117,22 @@ export const App = () => {
 
 		setScheduleArray(updatedSchedule);
 
-		setEverythingCompleted(foodActivityCompleted && workoutActivityCompleted && wordPuzzleCompleted);
-	}, [foodActivityCompleted, workoutActivityCompleted, wordPuzzleCompleted, showsActivityCompleted]);
+		setEverythingCompleted(
+			foodActivityCompleted &&
+				workoutActivityCompleted &&
+				wordPuzzleCompleted &&
+				showsActivityCompleted &&
+				danceActivityCompleted &&
+				cakeActivityCompleted
+		);
+	}, [
+		foodActivityCompleted,
+		workoutActivityCompleted,
+		wordPuzzleCompleted,
+		showsActivityCompleted,
+		danceActivityCompleted,
+		cakeActivityCompleted,
+	]);
 
 	const handleChange = (event: React.ChangeEvent<{}>, newIndex: number) => {
 		setSelectedTabIndex(newIndex);
@@ -149,12 +167,12 @@ export const App = () => {
 			<TabPanel value={selectedTabIndex} index={2}>
 				<FoodPage activity={scheduleArray[2]} setCompleted={setFoodActivityCompleted} />
 			</TabPanel>
-			{/* <TabPanel value={selectedTabIndex} index={3}>
-				<FoodPage activity={scheduleArray[3]} setCompleted={setFoodActivityCompleted} />
-			</TabPanel> */}
-			{/* <TabPanel value={selectedTabIndex} index={4}>
-				<FoodPage activity={scheduleArray[4]} setCompleted={setFoodActivityCompleted} />
-			</TabPanel> */}
+			<TabPanel value={selectedTabIndex} index={3}>
+				<DancePage activity={scheduleArray[3]} setCompleted={setDanceActivityCompleted} />
+			</TabPanel>
+			<TabPanel value={selectedTabIndex} index={4}>
+				<CakePage activity={scheduleArray[4]} setCompleted={setCakeActivityCompleted} />
+			</TabPanel>
 			<TabPanel value={selectedTabIndex} index={5}>
 				<WordPuzzlePage
 					activity={scheduleArray[5]}

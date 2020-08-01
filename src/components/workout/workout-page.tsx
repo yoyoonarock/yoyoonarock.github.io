@@ -1,9 +1,6 @@
 import React from "react";
 
-import Alert from "@material-ui/lab/Alert";
-
-import { DualInputAnswer } from "../dual-input-answer";
-import { Prompt } from "../prompt";
+import { BasicPage } from "../basic-page";
 
 const WORKOUT_DESCRIPTION = `eyesight may not be your strength
 but this one will test your height and length
@@ -20,13 +17,5 @@ interface Props {
 }
 
 export const WorkoutPage = ({ activity, setCompleted }: Props) => {
-	const { completed } = activity;
-
-	return (
-		<div className='basic-page'>
-			<Prompt text={WORKOUT_DESCRIPTION} />
-			<DualInputAnswer {...activity} setCompleted={setCompleted} />
-			{completed && <Alert severity='success'>well done!</Alert>}
-		</div>
-	);
+	return <BasicPage activity={activity} description={WORKOUT_DESCRIPTION} setCompleted={setCompleted} />;
 };
