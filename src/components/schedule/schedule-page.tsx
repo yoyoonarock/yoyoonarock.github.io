@@ -1,5 +1,12 @@
 import React from "react";
 
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+
+import bobe from "../../assets/bobe.gif";
+
 import { DualInputAnswer } from "../dual-input-answer";
 
 import "../../styles/schedule/schedule.scss";
@@ -19,6 +26,8 @@ interface Props {
 }
 
 export const SchedulePage = ({ scheduleArray, everythingCompleted }: Props) => {
+	const [open, setOpen] = React.useState(false);
+
 	return (
 		<div className='schedule-page'>
 			<div className='schedule'>
@@ -29,6 +38,23 @@ export const SchedulePage = ({ scheduleArray, everythingCompleted }: Props) => {
 			{everythingCompleted && (
 				<div className='final-rhyme'>
 					<p>{FINAL_RHYME}</p>
+					<Button variant='contained' color='primary' onClick={() => setOpen(true)}>
+						yea
+					</Button>
+					<Button variant='contained' color='primary' disabled>
+						nah
+					</Button>
+
+					<Dialog fullScreen open={open}>
+						<DialogContent>
+							<img src={bobe} alt='' />
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={() => setOpen(false)} color='primary' autoFocus>
+								YAY
+							</Button>
+						</DialogActions>
+					</Dialog>
 				</div>
 			)}
 		</div>
