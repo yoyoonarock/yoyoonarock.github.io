@@ -29,7 +29,7 @@ const LOWER_RIGHT_LETTERS = "weekvlgdeebai" + FILLER;
 
 export const DancePage = ({ activity, setCompleted }: Props) => {
 	React.useEffect(() => {
-		new CircleType(document.getElementById("bottom-circle-letters")).radius(150).dir(-1);
+		new CircleType(document.getElementById("bottom-circle-letters")).radius(120).dir(-1);
 		new CircleType(document.getElementById("upper-left-letters")).radius(250).dir(-1);
 		new CircleType(document.getElementById("upper-right-letters")).radius(250).dir(-1);
 		new CircleType(document.getElementById("lower-left-letters")).radius(175).dir(-1);
